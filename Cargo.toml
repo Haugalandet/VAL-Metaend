@@ -6,4 +6,5 @@ edition = "2021"
 [dependencies]
 amqprs = "1.5.0"
 mongodb = "2.7.0"
+serde = "1.0.189"
 tokio = "1.33.0"
