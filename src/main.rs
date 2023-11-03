@@ -21,6 +21,7 @@ async fn test_mongodb() {
             title: "Test Title".to_owned(),
             description: "Test Description".to_owned(),
             choice: vec!["Test Choice 1".to_owned(), "Test Choice 2".to_owned(), "Test Choice 3".to_owned()],
+            id: 0,
         };
     
         match create_poll(&client, poll).await {
