@@ -1,14 +1,29 @@
-use amqprs::{channel::{BasicConsumeArguments, BasicPublishArguments}, consumer::DefaultConsumer, BasicProperties};
-use tokio::time;
-use utils::constants::rabbit_mq_constants::{EXCHANGE, ROUTING_KEY};
+use actix_cors::Cors;
+use actix_web::{App, HttpServer};
+use db::tables::poll::create_test_polls;
+use server::api::{get_polls_by_title, get_all_polls};
 
-
-use crate::db::tables::poll::{Poll, create_poll};
 
 mod db;
 mod utils;
 mod server;
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<(), std::io::Error> {
+    let r = create_test_polls().await;
+    if r.is_err() {
+        eprintln!("{:?}", r);
+    }
+
+    HttpServer::new(|| {
+        let cors = Cors::permissive();
+
+        App::new()
+            .wrap(cors)
+            .service(get_polls_by_title)
+            .service(get_all_polls)
+    })
+    .bind(("127.0.0.1", 6969))?
+    .run()
+    .await
 }
