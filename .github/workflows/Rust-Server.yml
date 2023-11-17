@@ -38,8 +38,8 @@ jobs:
       run: pip install requests
 
     - name: Make script executable
-      run: chmod +x /scripts/test_endpoints.py
+      run: chmod +x ./scripts/test_endpoints.py
 
       
     - name: Test Endpoints
-      run: python /scripts/test_endpoints.py
+      run: python ./scripts/test_endpoints.py
