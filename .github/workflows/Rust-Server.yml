@@ -35,7 +35,7 @@ jobs:
         python-version: '3.11'
 
     - name: Install dependencies for Python
-      run: pip install request
+      run: pip install requests
       
     - name: Test Endpoints
       run: ./scripts/test_endpoints.py
