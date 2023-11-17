@@ -36,6 +36,10 @@ jobs:
 
     - name: Install dependencies for Python
       run: pip install requests
+
+    - name: Make script executable
+      run: chmod +x ./scripts/test_endpoints.py
+
       
     - name: Test Endpoints
       run: ./scripts/test_endpoints.py
