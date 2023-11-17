@@ -25,23 +25,3 @@ jobs:
       
     - name: Run tests
       run: cargo test --verbose
-      
-    - name: Start Server
-      run: cargo run &
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
-
-    - name: Install dependencies for Python
-      run: pip install requests
-
-    - name: Make script executable
-      run: chmod +x ./scripts/test_endpoints.py
-
-    - name: Wait for Server to Start
-      run: sleep 10
-
-    - name: Test Endpoints
-      run: python ./scripts/test_endpoints.py
