@@ -28,6 +28,11 @@ jobs:
       
     - name: Start Server
       run: cargo run &
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
       
     - name: Test Endpoints
-      run: ./test_endpoints.sh
+      run: ./scripts/test_endpoints.py
