@@ -1,6 +1,6 @@
 import requests
 
-URL = "http://localhost:6969/"
+URL = "http://localhost:6969"
 
 GET_POLLS_BY_TITLE = f"{URL}/polls"
 GET_ALL_POLLS = f"{URL}/polls/all"
@@ -11,8 +11,8 @@ def test_endpoint(url, expected_status):
 
 try:
     test_endpoint(f"{GET_POLLS_BY_TITLE}", 404)
-    test_endpoint(f"{GET_POLLS_BY_TITLE}/{'TITLE'}", 200)
-    test_endpoint(f"{GET_POLLS_BY_TITLE}/{'TITLE'}", 200)
+    test_endpoint(f"{GET_POLLS_BY_TITLE}/{'TITLE'}", 404)
+    test_endpoint(f"{GET_POLLS_BY_TITLE}/?title={'TITLE'}", 200)
     test_endpoint(GET_ALL_POLLS, 200)
     
     # Add more tests as needed
